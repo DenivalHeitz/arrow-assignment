@@ -1,0 +1,21 @@
+<mat-toolbar>
+    Arrow Assignment
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav class="mat-elevation-z8" mode="side" opened>
+        <div class="row">
+            <button mat-raised-button routerLink="chart">Chart</button>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <button mat-raised-button routerLink="table">Table</button>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
