@@ -1,4 +1,4 @@
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { Vaccine } from 'src/app/model/vaccine';
@@ -10,18 +10,27 @@ describe('ChartComponent', () => {
   let component: ChartComponent;
   let fixture: ComponentFixture<ChartComponent>;
   let testVaccineData: Vaccine[];
-  let getAllVaccineDataSpy: any
+  let dataService: DataService
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ChartComponent],
-      providers: [DataService, HttpClient, HttpHandler]
+      providers: [DataService],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
+    testVaccineData = [{
+      stateCode: 'AL',
+      stateName: 'Alabama', 
+      juneVax: 123456,
+      julyVax: 654321
+    }]
+
     fixture = TestBed.createComponent(ChartComponent);
+    dataService = TestBed.inject(DataService);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -30,7 +39,18 @@ describe('ChartComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('#selectState() should upate state selected', (done) => {
-    
-  // });
+  it('#initVaccineData() should init stateCodes, stateNames, currentJuneTotal, currentJulyTotal', (done) => { 
+    expect(component.vaccineData).toBeUndefined();
+    let spy = spyOn(dataService, 'getAllVaccineData').and.returnValue(of(testVaccineData));
+
+    component.ngOnInit();
+    component.ngAfterViewInit()
+
+    spy.calls.mostRecent().returnValue.subscribe(
+      data => {
+        expect(component.vaccineData).toEqual(testVaccineData);
+        done();
+      }
+    );
+  });
 });

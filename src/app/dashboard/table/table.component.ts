@@ -13,12 +13,9 @@ import { Quake } from 'src/app/model/quake';
 export class TableComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['source', 'magnitude', 'region', 'earthquake_id'];
-  // quakeData: Quake[];
   dataSource: MatTableDataSource<Quake>;
 
   constructor(private dataService: DataService) {
-    // this.getQuakeData();
-
     this.dataSource = new MatTableDataSource();
   }
   
@@ -36,7 +33,6 @@ export class TableComponent implements OnInit, AfterViewInit {
     this.dataService.getQuakeData(magnitude)
       .subscribe(
         data => {
-          // this.quakeData = data;
           this.dataSource.data = data;
           console.log(this.dataSource.data);
         },
@@ -45,14 +41,5 @@ export class TableComponent implements OnInit, AfterViewInit {
         }
       );
   }
-
 }
 
-const ELEMENT_DATA: Quake[] = [
-  {
-    source: "uw",
-    earthquake_id: "uw60744522",
-    magnitude: "2.3",
-    region: "3km SSE of Princeton, Canada"
-  }
-];
