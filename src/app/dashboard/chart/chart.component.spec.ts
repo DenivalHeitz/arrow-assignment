@@ -24,10 +24,10 @@ describe('ChartComponent', () => {
   beforeEach(() => {
     testVaccineData = [{
       stateCode: 'AL',
-      stateName: 'Alabama', 
+      stateName: 'Alabama',
       juneVax: 123456,
       julyVax: 654321
-    }]
+    }];
 
     fixture = TestBed.createComponent(ChartComponent);
     dataService = TestBed.inject(DataService);

@@ -16,7 +16,7 @@ describe('TableComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [TableComponent],
       providers: [DataService],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
     })
     .compileComponents();
   });
