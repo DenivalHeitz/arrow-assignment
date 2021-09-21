@@ -227,12 +227,35 @@ export class ChartComponent implements OnInit {
   updateCharts(): void {
     // update bar chart data
     this.barChart.options.plugins.title.text = `State Vaccine Data (${this.currentStateData.stateName})`;
-    this.barChart.data.labels = [this.currentStateData.stateName]
+    this.barChart.data.labels = [this.currentStateData.stateName];
     this.barChart.data.datasets[0].data = [this.currentJuneTotal];
     this.barChart.data.datasets[1].data = [this.currentJulyTotal];
 
     //update pie chart data
     this.pieChart.options.plugins.title.text = `Vaccine Percentage (${this.currentStateData.stateName})`;
+    this.pieChart.data.datasets[0].data = [this.currentJuneTotal, this.currentJulyTotal];
+
+    this.barChart.update();
+    this.pieChart.update();
+  }
+
+  resetCharts(): void {
+    this.currentJuneTotal = 0;
+    this.currentJulyTotal = 0;
+
+    for (let i = 0; i < this.vaccineData.length; i++) {
+      this.currentJuneTotal += this.vaccineData[i].juneVax;
+      this.currentJulyTotal += this.vaccineData[i].julyVax;
+    }
+
+    // reset bar chart data
+    this.barChart.options.plugins.title.text = `State Vaccine Data (All States)`;
+    this.barChart.data.labels = this.stateCodes;
+    this.barChart.data.datasets[0].data = this.juneVax;
+    this.barChart.data.datasets[1].data = this.julyVax;
+
+    // reset pie chart data
+    this.pieChart.options.plugins.title.text = `Vaccine Percentage (All States)`;
     this.pieChart.data.datasets[0].data = [this.currentJuneTotal, this.currentJulyTotal];
 
     this.barChart.update();

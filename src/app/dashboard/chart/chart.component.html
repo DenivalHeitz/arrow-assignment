@@ -5,6 +5,9 @@
         <mat-form-field>
         <mat-label>Select State</mat-label>
         <mat-select>
+            <mat-option (click)="resetCharts()">
+                All States
+            </mat-option>
             <mat-option *ngFor="let stateData of vaccineData" [value]="stateData.stateCode" (click)="selectState(stateData.stateCode)">
                 {{stateData.stateName}}
             </mat-option>

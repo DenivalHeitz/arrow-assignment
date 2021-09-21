@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ChartRoutingModule } from './chart-routing.module';
@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
     ChartRoutingModule,
     MatTabsModule,
     MatSelectModule
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ChartModule { }
