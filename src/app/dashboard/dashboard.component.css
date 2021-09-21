@@ -3,7 +3,7 @@ mat-toolbar {
   color: white;
 }
 
-mat-sidenav {
+mat-drawer {
   margin: 16px;
   width: 300px;
   border-right: none;
@@ -17,14 +17,16 @@ mat-sidenav {
 .content {
   height: calc(100vh - 98px);
   border-radius: 10px;
-  margin: 16px;
-  margin-left: 32px;
+  margin: 1.5%;
+  margin-left: 3.5%;
+  overflow-y: auto;
 
-  display: flex;
+  /* display: flex;
+  flex-grow: 5; */
   justify-content: center;
   align-items: center;
 
-  font-size: 2rem;
+  /* font-size: 2rem; */
   color: rgb(56, 56, 56);
 }
 

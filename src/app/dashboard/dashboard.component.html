@@ -1,8 +1,14 @@
 <mat-toolbar>
     Arrow Assignment
+    <!-- <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button> -->
+    <button mat-icon-button aria-label="Menu Icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
 </mat-toolbar>
 
-<mat-sidenav-container>
+<!-- <mat-sidenav-container>
     <mat-sidenav class="mat-elevation-z8" mode="side" opened>
         <div class="row">
             <button mat-raised-button routerLink="chart">Chart</button>
@@ -18,4 +24,28 @@
             <router-outlet></router-outlet>
         </div>
     </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+
+<mat-drawer-container autosize>
+    <mat-drawer #drawer class="mat-elevation-z8" mode="side">
+        <div class="row">
+            <button mat-raised-button routerLink="chart">Chart</button>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <button mat-raised-button routerLink="table">Table</button>
+        </div>
+    </mat-drawer>
+
+  <div class="content mat-elevation-z8">
+    <router-outlet></router-outlet>
+  </div>
+
+    <!-- <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content> -->
+
+</mat-drawer-container>

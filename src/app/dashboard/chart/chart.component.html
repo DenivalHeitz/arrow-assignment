@@ -1,1 +1,29 @@
-<p>chart works!</p>
+<!-- <p>chart works!</p> -->
+<!-- <div class="col-md-12"><canvas #barChart width="500" height="200"></canvas></div> -->
+<div class="container">
+    <div class="child">
+        <mat-form-field>
+        <mat-label>Select State</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let stateData of vaccineData" [value]="stateData.stateCode" (click)="selectState(stateData.stateCode)">
+                {{stateData.stateName}}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Bar Chart">
+        <div class="col-md-12">
+            <canvas #barCanvas width="500" height="200"></canvas>
+        </div>
+    
+    </mat-tab>
+    <mat-tab label="Pie Chart">
+        <div class="col-md-12">
+            <div class="pie-container">
+                <canvas #pieCanvas ></canvas>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

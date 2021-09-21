@@ -1,14 +1,21 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+import { Vaccine } from 'src/app/model/vaccine';
+import { DataService } from 'src/app/services/data.service';
 
 import { ChartComponent } from './chart.component';
 
 describe('ChartComponent', () => {
   let component: ChartComponent;
   let fixture: ComponentFixture<ChartComponent>;
+  let testVaccineData: Vaccine[];
+  let getAllVaccineDataSpy: any
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChartComponent ]
+      declarations: [ChartComponent],
+      providers: [DataService, HttpClient, HttpHandler]
     })
     .compileComponents();
   });
@@ -22,4 +29,8 @@ describe('ChartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('#selectState() should upate state selected', (done) => {
+    
+  // });
 });

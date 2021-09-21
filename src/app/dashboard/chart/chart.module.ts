@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { ChartRoutingModule } from './chart-routing.module';
 import { ChartComponent } from './chart.component';
 
+import { MatTabsModule } from '@angular/material/tabs'
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -11,7 +14,9 @@ import { ChartComponent } from './chart.component';
   ],
   imports: [
     CommonModule,
-    ChartRoutingModule
+    ChartRoutingModule,
+    MatTabsModule,
+    MatSelectModule
   ]
 })
 export class ChartModule { }
